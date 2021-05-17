@@ -8,9 +8,14 @@ import com.example.contactlist.databinding.ContactItemBinding
 
 class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
-    private val contacts = mutableListOf<ContactList>()
+    private val contacts = mutableListOf<Contact>()
 
-    fun setUpContacts(contact: List<ContactList>){
+    fun addContactToList(contact: Contact){
+        contacts.add(contact)
+        notifyDataSetChanged()
+    }
+
+    fun setUpContacts(contact: List<Contact>){
         this.contacts.addAll(contacts)
         notifyDataSetChanged()
     }
@@ -29,7 +34,7 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() 
     }
 
     inner class ContactViewHolder(private val binding: ContactItemBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bindItem(contact: ContactList){
+        fun bindItem(contact: Contact){
             binding.contactName.text = contact.name
             binding.contactNumber.text = contact.number
         }

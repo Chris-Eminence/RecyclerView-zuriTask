@@ -1,5 +1,5 @@
 package com.example.contactlist
 
-data class ContactList (val name : String, val number : String){
+data class Contact (val name : String, val number : String){
 
 }

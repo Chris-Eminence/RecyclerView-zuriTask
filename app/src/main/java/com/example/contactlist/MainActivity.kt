@@ -30,10 +30,10 @@ class MainActivity : AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.add_contact_dialogue, null)
         builder.setView(view)
 
-        val name = view.findViewById<EditText>(R.id.nameEt)
-        val no = view.findViewById<EditText>(R.id.numberEt)
+        val nameEditText = view.findViewById<EditText>(R.id.nameEt)
+        val numberEditTExt = view.findViewById<EditText>(R.id.numberEt)
         val saveBtn = view.findViewById<Button>(R.id.save_btn)
-        no.addTextChangedListener(object: TextWatcher{
+       numberEditTExt.addTextChangedListener(object: TextWatcher{
 
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -46,9 +46,9 @@ class MainActivity : AppCompatActivity() {
 
         val alertDialog = builder.create()
         saveBtn.setOnClickListener {
-            val contact = ContactList(name.text.toString(), no.text.toString())
-            val contacts = mutableListOf(contact)
-            adapter.setUpContacts(contacts)
+            val contact = Contact(nameEditText.text.toString(), numberEditTExt.text.toString())
+            //val contacts = mutableListOf(contact)
+            adapter.addContactToList(contact)
             alertDialog.dismiss()
         }
 
